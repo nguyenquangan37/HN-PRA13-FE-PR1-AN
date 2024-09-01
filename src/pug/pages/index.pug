@@ -1,0 +1,86 @@
+extends ../layout/layout.pug
+block variables
+  - const title = "Trang chủ"
+  - const current = "/"
+block banner
+  .banner
+    img(src="./assets/images/banner.jpg", alt="banner", srcset="")
+block content
+  section.about
+    img(src="./assets/images/bg-left.jpg", alt="bg-left" class="about__image about__image--left")
+    img(src="./assets/images/bg-right.jpg", alt="bg-right" class="about__image about__image--right")
+    .container
+      +heading("Giới thiệu")
+      .about__content
+        p.about__content-desc
+          | Mriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer  possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui faciteorum claritatem Investigtiones demonstraverunt lectores legere me lius quod ii legunt saepius.Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putam
+        a(href="#" class="btn btn--black") Xem thêm
+      .about__product
+        img(src="./assets/images/home-image1.jpg", alt="home-image1" )
+        .about__product-content
+          .content__image
+            +imageProduct("./assets/images/products/14.jpg")(class="product__image--sale")
+          .content__product
+            .content__product-title
+              h1 Rượu nho năm 1987
+              img(src="./assets/images/v-title.png", alt="v-title")
+            h1.content__product-price 300.000đ
+            a(href="#" class="btn btn--black") Add to cart
+            p.content__product-desc Một hợp chất có trong rượu vang được gọi là resveratro có khả nsadsadsaddadd
+            ul.content__product-time
+              li.time__item 334 ngày
+              li.time__item 26 giờ
+              li.time__item 60 phút
+              li.time__item 15 giây
+  section.newproduct
+    .container
+      +heading("Sản phẩm mới")
+      .newproduct__list
+        each item in [1,2,3,4]
+          +renderProduct(`./assets/images/products/${item}.jpg`,"rượu vang đà lạt", "370.000","450.000","product__image--new")
+  section.album
+    ul.album__list
+      each item in albums
+        li.album__list-item
+          img(src=`./assets/images/home-image${item}.jpg`, alt=`${item}` class="item__image")
+          .item__hover
+            img(src=`./assets/images/hover1.png`, alt=`hover1`)
+  section.seller
+    .container
+      +heading("Sản phẩm bán chạy")
+      .newproduct__list
+        each item in [1,2,3,4]
+          +renderProduct(`./assets/images/products/${item}.jpg`,"rượu vang đà lạt", "370.000","450.000","product__image--sale")
+  section.blog.blog--home
+    .container
+      .blog__inner
+        .blog__inner-content
+          +heading("tin tức & blog")
+          ul.blog__list
+            li.blog__item
+              .blog__item-image
+                img(src="./assets/images/home-image10.jpg", alt="home-image5")
+                i.fas.fa-link
+              h1.blog__item-title vang thăng long classic
+              p.blog__item-info Đăng bởi  | 30/03/2021 | 60 bình luận
+              p.blog__item-desc Vang nổ Thăng Long có hương vị đặc trưng của sản phẩm lên men tự nhiên từ hoa quả với độ rượu nhẹ, bọt ga đầy trắng mịn. Vang Nổ thăng long tạo cảm giác hương phấn, êm dịu, vui tươi, sản phẩm được đóng chai dung tích 750m
+              a(href="#" class="link link--more") Read more
+            li.blog__item
+              .blog__item-image
+                img(src="./assets/images/home-image11.jpg", alt="home-image5")
+                i.fas.fa-link
+              h1.blog__item-title vang thăng long classic
+              p.blog__item-info Đăng bởi  | 30/03/2021 | 60 bình luận
+              p.blog__item-desc Vang nổ Thăng Long có hương vị đặc trưng của sản phẩm lên men tự nhiên từ hoa quả với độ rượu nhẹ..
+              a(href="#" class="link link--more") Read more
+        .blog__inner-customer
+          +heading("Khách hàng")
+          .customer__quote
+            img(src="./assets/images/quote-icon.png", alt="home-image5")
+          p.customer__comment Vang nổ Thăng Long có hương vị đặc trưng của sản phẩm lên men tự nhiên từ hoa quả với độ rượu nhẹ, bọt ga đầy trắng mịn. Vang Nổ thăng long ...
+          a(href="#" class="link link--more") Read more
+          .customer__author
+            .customer__author-avt
+              img(src="./assets/images/home-image12.jpg", alt="home-image5")
+            h1.customer__author-name GIANG LT
+            .customer__author-job Graphic design

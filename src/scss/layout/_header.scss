@@ -1,0 +1,95 @@
+.header {
+  @include relative;
+  min-width: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  &__inner {
+    @include flexbox(space-between, center);
+    @include paddingY(1rem);
+    @include maxWidth($grid__bp-lg) {
+      flex-direction: row-reverse;
+    }
+    &-list {
+      @include flexbox();
+      @include maxWidth($grid__bp-lg) {
+        display: none;
+        background-color: $white-color;
+        padding: 0.5rem 1rem;
+      }
+      .list__item {
+        @include relative;
+        @include paddingX(1rem);
+        &:not(:last-child)::before {
+          content: "-";
+          color: $gray-color;
+          @include absolute(50%, -2px, null, null);
+          @include css3-prefix(transform, translateY(-50%));
+          @include maxWidth($grid__bp-lg) {
+            display: none;
+          }
+        }
+        &-link {
+          color: $gray-color;
+        }
+        @include maxWidth($grid__bp-lg) {
+          @include paddingY(.5rem);
+        }
+      }
+    }
+    &-search {
+      input {
+        padding-left: 1rem;
+        border: 0;
+        outline: none;
+        border-left: 1px solid $white-color;
+        color: $white-color;
+        background: transparent;
+        &::-webkit-input-placeholder {
+          /* Edge */
+          font-style: italic;
+          color:$gray-light-color;
+        }
+        &:-ms-input-placeholder {
+          /* Internet Explorer */
+          font-style: italic;
+          color: $gray-light-color;
+        }
+        &::placeholder {
+          font-style: italic;
+          color: $gray-light-color;
+        }
+      }
+      i {
+        color: $gray-light-color;
+      }
+    }
+    &-user {
+      @include relative;
+      display: none;
+      @include maxWidth($grid__bp-lg) {
+        display: block;
+      }
+      i {
+        font-size: 2.2rem;
+        color: $gray-light-color;
+        cursor: pointer;
+      }
+
+    }
+    &-check {
+      display: none;
+      &:checked~.header__inner-list {
+        @include maxWidth($grid__bp-lg) {
+          @include absolute(100%);
+          @include flexbox(null, null, column);
+          z-index: 3;
+        }
+      }
+    }
+  }
+  &--home {
+    @include absolute;
+    .header__inner-list .list__item-link {
+      color: $gray-light-color;
+    }
+  }
+}
